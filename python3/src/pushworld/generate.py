@@ -285,7 +285,7 @@ def filter_puzzles_by_solvability(
     with open(puzzle_path(i, "yaml")) as file:
       results = yaml.safe_load(file)
     if results["plan"] is not None:
-      solved_map[i] = len(solved_map)
+      solved_map[i] = i
 
   print(f"{len(solved_map)}/{num_puzzles} were solvable")
 
