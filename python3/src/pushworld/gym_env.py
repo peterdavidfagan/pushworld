@@ -15,7 +15,7 @@
 import random
 from typing import Any, Dict, Optional, Tuple, Union
 
-import gym
+import gymnasium as gym
 import numpy as np
 
 from pushworld.config import PUZZLE_EXTENSION
@@ -53,6 +53,8 @@ class PushWorldEnv(gym.Env):
             directory. If False, puzzles are padded to the maximum dimensions of
             all puzzles found in the `puzzle_path`.
     """
+
+    metadata = {"render_modes": ["rgb_array"]}
 
     def __init__(
         self,
@@ -131,11 +133,6 @@ class PushWorldEnv(gym.Env):
     def observation_space(self) -> gym.spaces.Space:
         """Implements `gym.Env.observation_space`."""
         return self._observation_space
-
-    @property
-    def metadata(self) -> Dict[str, Any]:
-        """Implements `gym.Env.metadata`."""
-        return {"render_modes": ["rgb_array"]}
 
     @property
     def render_mode(self) -> str:
